@@ -533,13 +533,15 @@
 
         <div class="notify-section">
             <p class="notify-text">Be the first to know when we launch</p>
-            <form class="notify-form" id="notifyForm">
+            <form class="notify-form" id="notifyForm" action="https://formspree.io/f/xjggbkoe" method="POST">
                 <input
                     type="email"
+                    name="email"
                     placeholder="Enter your email"
                     class="email-input"
                     required
                 >
+                <input type="hidden" name="_subject" value="New FXEthos Signup!">
                 <button type="submit" class="btn-primary">
                     Notify Me
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -627,20 +629,47 @@
     </footer>
 
     <script>
-        // Form submission
-        document.getElementById('notifyForm').addEventListener('submit', function(e) {
+        // Form submission with Formspree
+        document.getElementById('notifyForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const email = this.querySelector('.email-input').value;
-            console.log('Email submitted:', email);
 
-            // Show success message
-            document.getElementById('successMessage').classList.add('show');
-            this.querySelector('.email-input').value = '';
+            const form = this;
+            const email = form.querySelector('.email-input').value;
+            const submitBtn = form.querySelector('.btn-primary');
+            const originalBtnText = submitBtn.innerHTML;
 
-            // Hide after 5 seconds
-            setTimeout(() => {
-                document.getElementById('successMessage').classList.remove('show');
-            }, 5000);
+            // Show loading state
+            submitBtn.innerHTML = 'Sending...';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById('successMessage').classList.add('show');
+                    form.querySelector('.email-input').value = '';
+
+                    // Hide after 5 seconds
+                    setTimeout(() => {
+                        document.getElementById('successMessage').classList.remove('show');
+                    }, 5000);
+                } else {
+                    alert('Oops! Something went wrong. Please try again.');
+                }
+            } catch (error) {
+                alert('Oops! Something went wrong. Please try again.');
+            }
+
+            // Reset button
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
         });
 
         // Simulated live price
