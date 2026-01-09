@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 100">
+  <defs>
+    <linearGradient id="grad6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#10b981"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon -->
+  <rect x="0" y="10" width="70" height="70" rx="14" fill="#0a0a0f"/>
+  <text x="35" y="55" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700" text-anchor="middle" fill="url(#grad6)">FX</text>
+  <path d="M10 58 L20 52 L30 55 L42 44 L52 47 L60 38" stroke="url(#grad6)" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Text -->
+  <text x="90" y="48" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="url(#grad6)">FX</text>
+  <text x="138" y="48" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" fill="#ffffff">Ethos</text>
+
+  <!-- Slogan -->
+  <text x="90" y="72" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="400" fill="#a0a0b0" letter-spacing="2">TRADE SMARTER</text>
+</svg>

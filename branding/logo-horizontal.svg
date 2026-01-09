@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80">
+  <defs>
+    <linearGradient id="iconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#10b981"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="60%" style="stop-color:#10b981"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Icon -->
+  <rect x="0" y="0" width="80" height="80" rx="16" fill="#0a0a0f"/>
+  <text x="40" y="52" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" text-anchor="middle" fill="url(#iconGrad)">FX</text>
+  <path d="M12 62 L22 55 L32 58 L48 45 L58 48 L68 38" stroke="url(#iconGrad)" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Text -->
+  <text x="100" y="52" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="url(#textGrad)">FX</text>
+  <text x="155" y="52" font-family="Inter, Arial, sans-serif" font-size="38" font-weight="700" fill="#ffffff">Ethos</text>
+</svg>

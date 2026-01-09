@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FXEthos - Brand Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg-dark: #0a0a0f;
+            --color-bg-card: #1a1a24;
+            --color-primary: #3b82f6;
+            --color-accent: #10b981;
+            --color-text: #ffffff;
+            --color-text-secondary: #a0a0b0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #6e6e73;
+            margin-bottom: 60px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e5e5e7;
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .logo-card {
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-card.dark {
+            background: var(--color-bg-dark);
+        }
+
+        .logo-card.light {
+            background: #ffffff;
+            border: 1px solid #e5e5e7;
+        }
+
+        .logo-card img {
+            max-width: 200px;
+            height: auto;
+        }
+
+        .logo-card .label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #6e6e73;
+        }
+
+        .logo-card.dark .label {
+            color: var(--color-text-secondary);
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .color-swatch {
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .color-preview {
+            height: 100px;
+        }
+
+        .color-info {
+            padding: 16px;
+        }
+
+        .color-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .color-value {
+            font-size: 13px;
+            color: #6e6e73;
+            font-family: monospace;
+        }
+
+        .typography-example {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .type-row {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #e5e5e7;
+        }
+
+        .type-row:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .type-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #6e6e73;
+            margin-bottom: 8px;
+        }
+
+        .type-h1 { font-size: 48px; font-weight: 700; }
+        .type-h2 { font-size: 36px; font-weight: 600; }
+        .type-h3 { font-size: 24px; font-weight: 600; }
+        .type-body { font-size: 16px; font-weight: 400; }
+        .type-small { font-size: 14px; font-weight: 400; color: #6e6e73; }
+
+        .gradient-bar {
+            height: 60px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+            margin-bottom: 16px;
+        }
+
+        .usage-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .usage-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .usage-card h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--color-accent);
+        }
+
+        .usage-card.dont h4 {
+            color: #ef4444;
+        }
+
+        .usage-card ul {
+            list-style: none;
+            font-size: 14px;
+        }
+
+        .usage-card li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .usage-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+        }
+
+        .usage-card.dont li::before {
+            content: '✕';
+            color: #ef4444;
+        }
+
+        .download-section {
+            background: var(--color-bg-dark);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .download-section h3 {
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .download-section p {
+            color: var(--color-text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .file-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .file-item {
+            background: var(--color-bg-card);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            font-family: monospace;
+        }
+
+        @media (max-width: 640px) {
+            .usage-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FXEthos</h1>
+        <p class="subtitle">Brand Style Guide</p>
+
+        <!-- Logos Section -->
+        <div class="section">
+            <h2 class="section-title">Logo Variations</h2>
+            <div class="logo-grid">
+                <div class="logo-card dark">
+                    <img src="logo-icon.svg" alt="Logo Icon">
+                    <span class="label">Icon (Dark Background)</span>
+                </div>
+                <div class="logo-card light">
+                    <img src="logo-icon-gradient-bg.svg" alt="Logo Icon Gradient">
+                    <span class="label">Icon (Gradient Background)</span>
+                </div>
+                <div class="logo-card dark">
+                    <img src="logo-wordmark.svg" alt="Wordmark">
+                    <span class="label">Wordmark</span>
+                </div>
+                <div class="logo-card dark">
+                    <img src="logo-horizontal.svg" alt="Horizontal Logo">
+                    <span class="label">Horizontal (Dark Background)</span>
+                </div>
+                <div class="logo-card light">
+                    <img src="logo-horizontal-dark.svg" alt="Horizontal Logo Dark">
+                    <span class="label">Horizontal (Light Background)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Colors Section -->
+        <div class="section">
+            <h2 class="section-title">Brand Colors</h2>
+            <div class="gradient-bar"></div>
+            <div class="color-grid">
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: #3b82f6;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Primary Blue</div>
+                        <div class="color-value">#3b82f6</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: #10b981;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Accent Green</div>
+                        <div class="color-value">#10b981</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: #0a0a0f;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Background Dark</div>
+                        <div class="color-value">#0a0a0f</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: #1a1a24;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Card Background</div>
+                        <div class="color-value">#1a1a24</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: #ffffff;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Text Primary</div>
+                        <div class="color-value">#ffffff</div>
+                    </div>
+                </div>
+                <div class="color-swatch">
+                    <div class="color-preview" style="background: #a0a0b0;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Text Secondary</div>
+                        <div class="color-value">#a0a0b0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Typography Section -->
+        <div class="section">
+            <h2 class="section-title">Typography</h2>
+            <div class="typography-example">
+                <div class="type-row">
+                    <div class="type-label">Font Family</div>
+                    <div class="type-h3">Inter</div>
+                </div>
+                <div class="type-row">
+                    <div class="type-label">Heading 1 - 48px Bold</div>
+                    <div class="type-h1">Trade with Precision</div>
+                </div>
+                <div class="type-row">
+                    <div class="type-label">Heading 2 - 36px Semibold</div>
+                    <div class="type-h2">Professional Trading Tools</div>
+                </div>
+                <div class="type-row">
+                    <div class="type-label">Heading 3 - 24px Semibold</div>
+                    <div class="type-h3">Advanced Analytics</div>
+                </div>
+                <div class="type-row">
+                    <div class="type-label">Body - 16px Regular</div>
+                    <div class="type-body">Elevate your trading journey with cutting-edge analytics, real-time insights, and professional-grade tools designed for the modern trader.</div>
+                </div>
+                <div class="type-row">
+                    <div class="type-label">Small - 14px Regular</div>
+                    <div class="type-small">Trading involves risk. Past performance is not indicative of future results.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage Guidelines -->
+        <div class="section">
+            <h2 class="section-title">Usage Guidelines</h2>
+            <div class="usage-grid">
+                <div class="usage-card">
+                    <h4>Do</h4>
+                    <ul>
+                        <li>Use logo on dark backgrounds</li>
+                        <li>Maintain clear space around logo</li>
+                        <li>Use gradient for emphasis</li>
+                        <li>Keep minimum size 32px</li>
+                    </ul>
+                </div>
+                <div class="usage-card dont">
+                    <h4>Don't</h4>
+                    <ul>
+                        <li>Stretch or distort the logo</li>
+                        <li>Change the gradient colors</li>
+                        <li>Add effects like shadows</li>
+                        <li>Place on busy backgrounds</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Downloads -->
+        <div class="section">
+            <div class="download-section">
+                <h3>Brand Assets</h3>
+                <p>All logo files are included in this folder</p>
+                <div class="file-list">
+                    <span class="file-item">logo-icon.svg</span>
+                    <span class="file-item">logo-icon-gradient-bg.svg</span>
+                    <span class="file-item">logo-wordmark.svg</span>
+                    <span class="file-item">logo-horizontal.svg</span>
+                    <span class="file-item">logo-horizontal-dark.svg</span>
+                    <span class="file-item">favicon.svg</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
