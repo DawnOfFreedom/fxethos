@@ -99,6 +99,11 @@
             z-index: 100;
         }
 
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+        }
+
         .logo {
             font-size: 24px;
             font-weight: 700;
@@ -107,6 +112,15 @@
 
         .logo-fx { color: var(--color-primary); }
         .logo-ethos { color: var(--color-text); }
+
+        .logo-slogan {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
 
         .login-btn {
             display: inline-flex;
@@ -485,9 +499,12 @@
 
     <!-- Header -->
     <header class="header">
-        <a href="#" class="logo">
-            <span class="logo-fx">FX</span><span class="logo-ethos">Ethos</span>
-        </a>
+        <div class="logo-container">
+            <a href="#" class="logo">
+                <span class="logo-fx">FX</span><span class="logo-ethos">Ethos</span>
+            </a>
+            <span class="logo-slogan">Trade Smarter</span>
+        </div>
         <a href="main.html" class="login-btn">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
