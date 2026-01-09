@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FXEthos - Slogan Options</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a0f;
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 60px 24px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: #a0a0b0;
+            margin-bottom: 48px;
+        }
+
+        .logo-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .logo-card {
+            background: #1a1a24;
+            border: 1px solid #2a2a3a;
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .logo-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        .logo-card img {
+            height: 80px;
+            width: auto;
+        }
+
+        .logo-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #2a2a3a;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #2a2a3a, transparent);
+            margin: 48px 0;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .stacked-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .stacked-card {
+            background: #1a1a24;
+            border: 1px solid #2a2a3a;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stacked-card:hover {
+            border-color: #10b981;
+        }
+
+        .stacked-card img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 640px) {
+            .stacked-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-card {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Slogan Options</h1>
+        <p class="subtitle">Choose your favorite tagline for FXEthos</p>
+
+        <div class="logo-grid">
+            <div class="logo-card">
+                <img src="logo-slogan-1.svg" alt="Trade with Purpose">
+                <span class="logo-number">01</span>
+            </div>
+            <div class="logo-card">
+                <img src="logo-slogan-2.svg" alt="Precision & Integrity">
+                <span class="logo-number">02</span>
+            </div>
+            <div class="logo-card">
+                <img src="logo-slogan-3.svg" alt="Your Trading Edge">
+                <span class="logo-number">03</span>
+            </div>
+            <div class="logo-card">
+                <img src="logo-slogan-4.svg" alt="Elevate Your Trade">
+                <span class="logo-number">04</span>
+            </div>
+            <div class="logo-card">
+                <img src="logo-slogan-5.svg" alt="Where Ethics Meet Excellence">
+                <span class="logo-number">05</span>
+            </div>
+            <div class="logo-card">
+                <img src="logo-slogan-6.svg" alt="Trade Smarter">
+                <span class="logo-number">06</span>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h2>Stacked Versions</h2>
+        <div class="stacked-grid">
+            <div class="stacked-card">
+                <img src="logo-stacked-1.svg" alt="Stacked Logo 1">
+            </div>
+            <div class="stacked-card">
+                <img src="logo-stacked-2.svg" alt="Stacked Logo 2">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

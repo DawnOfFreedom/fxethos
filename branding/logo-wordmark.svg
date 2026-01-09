@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60">
+  <defs>
+    <linearGradient id="fxGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="50%" style="stop-color:#10b981"/>
+    </linearGradient>
+  </defs>
+  <!-- FX in gradient -->
+  <text x="0" y="46" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="700" fill="url(#fxGradient)">FX</text>
+  <!-- Ethos in white -->
+  <text x="70" y="46" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="700" fill="#ffffff">Ethos</text>
+</svg>
