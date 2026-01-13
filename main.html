@@ -147,6 +147,7 @@
                 <span class="logo-slogan">Trade Smarter</span>
             </div>
             <ul class="nav-links">
+                <li><a href="#calculator">Calculator</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
@@ -218,6 +219,211 @@
                 <div class="trading-card-price">
                     <span class="price">1.0847</span>
                     <span class="time">Live</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prop Firm Challenge Calculator Section -->
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Tools</span>
+                <h2 class="section-title">Prop Firm Challenge Calculator</h2>
+                <p class="section-subtitle">Calculate your probability of passing any prop firm challenge using Monte Carlo simulation</p>
+            </div>
+
+            <div class="calculator-container">
+                <div class="calculator-inputs">
+                    <!-- Challenge Rules -->
+                    <div class="calc-card">
+                        <h3 class="calc-card-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            Challenge Rules
+                        </h3>
+                        <div class="calc-grid">
+                            <div class="calc-field">
+                                <label for="accountSize">Account Size</label>
+                                <div class="input-with-prefix">
+                                    <span class="input-prefix">$</span>
+                                    <input type="number" id="accountSize" value="100000" min="1000" max="1000000">
+                                </div>
+                            </div>
+                            <div class="calc-field">
+                                <label for="profitTarget">Profit Target</label>
+                                <div class="input-with-suffix">
+                                    <input type="number" id="profitTarget" value="10" min="1" max="50" step="0.5">
+                                    <span class="input-suffix">%</span>
+                                </div>
+                            </div>
+                            <div class="calc-field">
+                                <label for="maxDrawdown">Max Drawdown</label>
+                                <div class="input-with-suffix">
+                                    <input type="number" id="maxDrawdown" value="10" min="1" max="20" step="0.5">
+                                    <span class="input-suffix">%</span>
+                                </div>
+                            </div>
+                            <div class="calc-field">
+                                <label for="dailyDrawdown">Daily Drawdown</label>
+                                <div class="input-with-suffix">
+                                    <input type="number" id="dailyDrawdown" value="5" min="1" max="10" step="0.5">
+                                    <span class="input-suffix">%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trading Statistics -->
+                    <div class="calc-card">
+                        <h3 class="calc-card-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                            Your Trading Statistics
+                        </h3>
+                        <div class="calc-grid">
+                            <div class="calc-field">
+                                <label for="winRate">Win Rate</label>
+                                <div class="input-with-suffix">
+                                    <input type="number" id="winRate" value="55" min="20" max="90" step="1">
+                                    <span class="input-suffix">%</span>
+                                </div>
+                            </div>
+                            <div class="calc-field">
+                                <label for="avgWin">Average Win</label>
+                                <div class="input-with-suffix">
+                                    <input type="number" id="avgWin" value="1.5" min="0.1" max="10" step="0.1">
+                                    <span class="input-suffix">%</span>
+                                </div>
+                            </div>
+                            <div class="calc-field">
+                                <label for="avgLoss">Average Loss</label>
+                                <div class="input-with-suffix">
+                                    <input type="number" id="avgLoss" value="1" min="0.1" max="10" step="0.1">
+                                    <span class="input-suffix">%</span>
+                                </div>
+                            </div>
+                            <div class="calc-field">
+                                <label for="tradesPerDay">Trades per Day</label>
+                                <input type="number" id="tradesPerDay" value="2" min="1" max="20" step="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Simulation Settings -->
+                    <div class="calc-card">
+                        <h3 class="calc-card-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            Simulation Settings
+                        </h3>
+                        <div class="calc-grid">
+                            <div class="calc-field">
+                                <label for="maxDays">Max Trading Days</label>
+                                <input type="number" id="maxDays" value="30" min="5" max="365" step="1">
+                            </div>
+                            <div class="calc-field">
+                                <label for="simulations">Simulations</label>
+                                <input type="number" id="simulations" value="10000" min="1000" max="100000" step="1000">
+                            </div>
+                        </div>
+                        <button id="runSimulation" class="btn btn-primary btn-block calc-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Run Monte Carlo Simulation
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="calculator-results" id="resultsPanel">
+                    <div class="results-placeholder">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                        <p>Configure your parameters and run the simulation to see results</p>
+                    </div>
+
+                    <div class="results-content" id="resultsContent" style="display: none;">
+                        <!-- Pass Probability -->
+                        <div class="result-main">
+                            <div class="probability-circle" id="probabilityCircle">
+                                <svg viewBox="0 0 100 100">
+                                    <circle class="probability-bg" cx="50" cy="50" r="45"/>
+                                    <circle class="probability-fill" cx="50" cy="50" r="45" id="probabilityRing"/>
+                                </svg>
+                                <div class="probability-value">
+                                    <span id="probabilityPercent">0</span>%
+                                </div>
+                            </div>
+                            <div class="probability-label">Pass Probability</div>
+                            <div class="probability-verdict" id="probabilityVerdict">-</div>
+                        </div>
+
+                        <!-- Key Metrics -->
+                        <div class="results-metrics">
+                            <div class="metric-card">
+                                <div class="metric-label">Expected Value</div>
+                                <div class="metric-value" id="expectedValue">-</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Avg. Days to Pass</div>
+                                <div class="metric-value" id="avgDays">-</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Risk of Ruin</div>
+                                <div class="metric-value" id="riskOfRuin">-</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-label">Profit Factor</div>
+                                <div class="metric-value" id="profitFactor">-</div>
+                            </div>
+                        </div>
+
+                        <!-- Statistics Summary -->
+                        <div class="results-summary">
+                            <h4>Simulation Statistics</h4>
+                            <div class="summary-row">
+                                <span>Simulations Run</span>
+                                <span id="simCount">-</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Passed Challenges</span>
+                                <span id="passedCount">-</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Failed (Max DD)</span>
+                                <span id="failedMaxDD">-</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Failed (Daily DD)</span>
+                                <span id="failedDailyDD">-</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Failed (Time Limit)</span>
+                                <span id="failedTime">-</span>
+                            </div>
+                        </div>
+
+                        <!-- Mathematical Edge -->
+                        <div class="results-edge">
+                            <h4>Your Trading Edge</h4>
+                            <div class="edge-formula">
+                                <span class="edge-label">Expectancy:</span>
+                                <span class="edge-value" id="expectancy">-</span>
+                            </div>
+                            <div class="edge-formula">
+                                <span class="edge-label">R:R Ratio:</span>
+                                <span class="edge-value" id="rrRatio">-</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -525,6 +731,191 @@
                 passwordInput.focus();
             }
         });
+
+        // ===== Monte Carlo Prop Firm Calculator =====
+        const runSimulationBtn = document.getElementById('runSimulation');
+
+        runSimulationBtn.addEventListener('click', function() {
+            // Get input values
+            const accountSize = parseFloat(document.getElementById('accountSize').value);
+            const profitTarget = parseFloat(document.getElementById('profitTarget').value) / 100;
+            const maxDrawdown = parseFloat(document.getElementById('maxDrawdown').value) / 100;
+            const dailyDrawdown = parseFloat(document.getElementById('dailyDrawdown').value) / 100;
+            const winRate = parseFloat(document.getElementById('winRate').value) / 100;
+            const avgWin = parseFloat(document.getElementById('avgWin').value) / 100;
+            const avgLoss = parseFloat(document.getElementById('avgLoss').value) / 100;
+            const tradesPerDay = parseInt(document.getElementById('tradesPerDay').value);
+            const maxDays = parseInt(document.getElementById('maxDays').value);
+            const numSimulations = parseInt(document.getElementById('simulations').value);
+
+            // Update button state
+            const originalText = runSimulationBtn.innerHTML;
+            runSimulationBtn.innerHTML = `
+                <svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+                Running Simulation...
+            `;
+            runSimulationBtn.disabled = true;
+
+            // Run simulation asynchronously
+            setTimeout(() => {
+                const results = runMonteCarloSimulation(
+                    accountSize, profitTarget, maxDrawdown, dailyDrawdown,
+                    winRate, avgWin, avgLoss, tradesPerDay, maxDays, numSimulations
+                );
+                displayResults(results, winRate, avgWin, avgLoss);
+                runSimulationBtn.innerHTML = originalText;
+                runSimulationBtn.disabled = false;
+            }, 100);
+        });
+
+        function runMonteCarloSimulation(accountSize, profitTarget, maxDrawdown, dailyDrawdown, winRate, avgWin, avgLoss, tradesPerDay, maxDays, numSimulations) {
+            let passed = 0;
+            let failedMaxDD = 0;
+            let failedDailyDD = 0;
+            let failedTime = 0;
+            let totalDaysToPassed = 0;
+
+            const targetAmount = accountSize * (1 + profitTarget);
+            const maxDDAmount = accountSize * (1 - maxDrawdown);
+
+            for (let sim = 0; sim < numSimulations; sim++) {
+                let balance = accountSize;
+                let highWaterMark = accountSize;
+                let day = 0;
+                let challengePassed = false;
+                let challengeFailed = false;
+                let failReason = '';
+
+                while (day < maxDays && !challengePassed && !challengeFailed) {
+                    day++;
+                    const dayStartBalance = balance;
+
+                    // Simulate trades for the day
+                    for (let trade = 0; trade < tradesPerDay; trade++) {
+                        const isWin = Math.random() < winRate;
+
+                        if (isWin) {
+                            balance += accountSize * avgWin;
+                        } else {
+                            balance -= accountSize * avgLoss;
+                        }
+
+                        // Update high water mark
+                        if (balance > highWaterMark) {
+                            highWaterMark = balance;
+                        }
+
+                        // Check max drawdown from high water mark
+                        const currentDrawdown = (highWaterMark - balance) / highWaterMark;
+                        if (currentDrawdown >= maxDrawdown) {
+                            challengeFailed = true;
+                            failReason = 'maxDD';
+                            break;
+                        }
+
+                        // Check if target reached
+                        if (balance >= targetAmount) {
+                            challengePassed = true;
+                            break;
+                        }
+                    }
+
+                    // Check daily drawdown
+                    if (!challengeFailed && !challengePassed) {
+                        const dailyLoss = (dayStartBalance - balance) / accountSize;
+                        if (dailyLoss >= dailyDrawdown) {
+                            challengeFailed = true;
+                            failReason = 'dailyDD';
+                        }
+                    }
+                }
+
+                // Record results
+                if (challengePassed) {
+                    passed++;
+                    totalDaysToPassed += day;
+                } else if (challengeFailed) {
+                    if (failReason === 'maxDD') failedMaxDD++;
+                    else if (failReason === 'dailyDD') failedDailyDD++;
+                } else {
+                    failedTime++;
+                }
+            }
+
+            return {
+                total: numSimulations,
+                passed,
+                failedMaxDD,
+                failedDailyDD,
+                failedTime,
+                passRate: passed / numSimulations,
+                avgDaysToPassed: passed > 0 ? totalDaysToPassed / passed : 0
+            };
+        }
+
+        function displayResults(results, winRate, avgWin, avgLoss) {
+            // Hide placeholder, show results
+            document.querySelector('.results-placeholder').style.display = 'none';
+            document.getElementById('resultsContent').style.display = 'flex';
+
+            // Calculate trading edge metrics
+            const expectancy = (winRate * avgWin) - ((1 - winRate) * avgLoss);
+            const rrRatio = avgWin / avgLoss;
+            const profitFactor = (winRate * avgWin) / ((1 - winRate) * avgLoss);
+
+            // Update probability circle
+            const probability = results.passRate * 100;
+            const circumference = 2 * Math.PI * 45; // r=45
+            const offset = circumference - (probability / 100) * circumference;
+
+            document.getElementById('probabilityPercent').textContent = probability.toFixed(1);
+            document.getElementById('probabilityRing').style.strokeDashoffset = offset;
+
+            // Set verdict
+            const verdictEl = document.getElementById('probabilityVerdict');
+            if (probability >= 70) {
+                verdictEl.textContent = 'Excellent Odds';
+                verdictEl.className = 'probability-verdict excellent';
+            } else if (probability >= 50) {
+                verdictEl.textContent = 'Good Odds';
+                verdictEl.className = 'probability-verdict good';
+            } else if (probability >= 30) {
+                verdictEl.textContent = 'Moderate Risk';
+                verdictEl.className = 'probability-verdict moderate';
+            } else {
+                verdictEl.textContent = 'High Risk';
+                verdictEl.className = 'probability-verdict poor';
+            }
+
+            // Update metrics
+            document.getElementById('expectedValue').textContent = expectancy > 0 ? '+' + (expectancy * 100).toFixed(2) + '%' : (expectancy * 100).toFixed(2) + '%';
+            document.getElementById('avgDays').textContent = results.avgDaysToPassed > 0 ? results.avgDaysToPassed.toFixed(1) : 'N/A';
+            document.getElementById('riskOfRuin').textContent = ((results.failedMaxDD + results.failedDailyDD) / results.total * 100).toFixed(1) + '%';
+            document.getElementById('profitFactor').textContent = profitFactor.toFixed(2);
+
+            // Update summary
+            document.getElementById('simCount').textContent = results.total.toLocaleString();
+            document.getElementById('passedCount').textContent = results.passed.toLocaleString();
+            document.getElementById('failedMaxDD').textContent = results.failedMaxDD.toLocaleString();
+            document.getElementById('failedDailyDD').textContent = results.failedDailyDD.toLocaleString();
+            document.getElementById('failedTime').textContent = results.failedTime.toLocaleString();
+
+            // Update edge
+            document.getElementById('expectancy').textContent = expectancy > 0 ? '+' + (expectancy * 100).toFixed(2) + '% per trade' : (expectancy * 100).toFixed(2) + '% per trade';
+            document.getElementById('rrRatio').textContent = rrRatio.toFixed(2) + ':1';
+        }
     </script>
+
+    <!-- SVG Gradient Definition for Probability Ring -->
+    <svg width="0" height="0" style="position:absolute">
+        <defs>
+            <linearGradient id="probGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#3b82f6"/>
+                <stop offset="100%" style="stop-color:#10b981"/>
+            </linearGradient>
+        </defs>
+    </svg>
 </body>
 </html>
