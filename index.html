@@ -110,7 +110,12 @@
             text-decoration: none;
         }
 
-        .logo-fx { color: var(--color-primary); }
+        .logo-fx {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
         .logo-ethos { color: var(--color-text); }
 
         .logo-slogan {
@@ -146,6 +151,47 @@
         .login-btn svg {
             width: 16px;
             height: 16px;
+        }
+
+        /* Language Switcher */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 4px;
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 32px;
+            border: none;
+            background: transparent;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .lang-btn.active {
+            background: var(--color-bg-card);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         /* Main Content */
@@ -205,14 +251,20 @@
         .pulse-dot {
             width: 8px;
             height: 8px;
-            background: var(--color-accent);
+            background: #22c55e;
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
-            50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+            0%, 100% {
+                background: #0d6832;
+                box-shadow: 0 0 2px rgba(13, 104, 50, 0.3);
+            }
+            50% {
+                background: #6ee7b7;
+                box-shadow: 0 0 14px #6ee7b7, 0 0 28px rgba(110, 231, 183, 0.7);
+            }
         }
 
         /* Email Signup */
@@ -345,59 +397,70 @@
             transform: translateY(-2px);
         }
 
-        /* Floating Card */
-        .floating-card {
+        /* Floating Cards */
+        .floating-cards {
             position: fixed;
-            right: 8%;
+            right: 5%;
             top: 50%;
             transform: translateY(-50%);
             z-index: 1;
             display: none;
+            flex-direction: column;
+            gap: 16px;
         }
 
         @media (min-width: 1200px) {
-            .floating-card {
-                display: block;
+            .floating-cards {
+                display: flex;
             }
         }
 
         .trading-card {
             background: var(--color-bg-card);
             border: 1px solid var(--color-border);
-            border-radius: 16px;
-            padding: 24px;
-            width: 260px;
+            border-radius: 12px;
+            padding: 16px 20px;
+            width: 220px;
             box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
             animation: cardFloat 6s ease-in-out infinite;
         }
 
+        .trading-card:nth-child(2) {
+            animation-delay: -2s;
+        }
+
+        .trading-card:nth-child(3) {
+            animation-delay: -4s;
+        }
+
         @keyframes cardFloat {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-10px); }
         }
 
         .trading-card-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
+            margin-bottom: 8px;
         }
 
         .pair {
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
         }
 
         .change {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
         }
 
         .change.positive { color: var(--color-accent); }
+        .change.negative { color: #ef4444; }
 
         .trading-card-chart {
-            height: 70px;
-            margin-bottom: 16px;
+            height: 50px;
+            margin-bottom: 8px;
         }
 
         .chart-line {
@@ -408,29 +471,33 @@
         .trading-card-price {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
+            align-items: center;
         }
 
         .price {
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 700;
         }
 
-        .time {
-            font-size: 11px;
+        .time-badge {
+            font-size: 10px;
             color: var(--color-accent);
             display: flex;
             align-items: center;
             gap: 4px;
         }
 
-        .time::before {
-            content: '';
+        .live-dot {
             width: 6px;
             height: 6px;
             background: var(--color-accent);
             border-radius: 50%;
-            animation: pulse 2s infinite;
+            animation: livePulse 2s infinite;
+        }
+
+        @keyframes livePulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 4px var(--color-accent); }
+            50% { opacity: 0.5; box-shadow: 0 0 8px var(--color-accent); }
         }
 
         /* Footer */
@@ -505,54 +572,61 @@
             </a>
             <span class="logo-slogan">Trade Smarter</span>
         </div>
-        <a href="main.html" class="login-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
-            </svg>
-            Login
-        </a>
+        <div class="header-right">
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="en" title="English">🇬🇧</button>
+                <button class="lang-btn" data-lang="nl" title="Nederlands">🇳🇱</button>
+            </div>
+            <a href="main.html" class="login-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+                </svg>
+                <span data-i18n="login">Login</span>
+            </a>
+        </div>
     </header>
 
     <!-- Main Content -->
     <main class="coming-soon">
         <h1 class="main-title">
-            <span class="title-line">Something</span>
-            <span class="title-line highlight">Amazing</span>
-            <span class="title-line">is Coming</span>
+            <span class="title-line" data-i18n="title1">Something</span>
+            <span class="title-line highlight" data-i18n="title2">Amazing</span>
+            <span class="title-line" data-i18n="title3">is Coming</span>
         </h1>
 
-        <p class="tagline">
+        <p class="tagline" data-i18n="tagline">
             We're building the next generation of trading tools.
             Professional-grade analytics, lightning-fast execution, and AI-powered insights.
         </p>
 
         <div class="launch-badge">
             <span class="pulse-dot"></span>
-            <span>Launching Q1 2025</span>
+            <span data-i18n="launchDate">Launching soon</span>
         </div>
 
         <div class="notify-section">
-            <p class="notify-text">Be the first to know when we launch</p>
+            <p class="notify-text" data-i18n="notifyText">Be the first to know when we launch</p>
             <form class="notify-form" id="notifyForm" action="https://formspree.io/f/xjggbkoe" method="POST">
                 <input
                     type="email"
                     name="email"
+                    data-i18n-placeholder="emailPlaceholder"
                     placeholder="Enter your email"
                     class="email-input"
                     required
                 >
                 <input type="hidden" name="_subject" value="New FXEthos Signup!">
                 <button type="submit" class="btn-primary">
-                    Notify Me
+                    <span data-i18n="notifyBtn">Notify Me</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M5 12h14M12 5l7 7-7 7"/>
                     </svg>
                 </button>
             </form>
-            <div class="success-message" id="successMessage">
+            <div class="success-message" id="successMessage" data-i18n="successMsg">
                 Thanks! We'll notify you when we launch.
             </div>
-            <p class="privacy-note">We respect your privacy. No spam, ever.</p>
+            <p class="privacy-note" data-i18n="privacyNote">We respect your privacy. No spam, ever.</p>
         </div>
 
         <div class="features-preview">
@@ -560,56 +634,46 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
                 </svg>
-                Advanced Analytics
+                <span data-i18n="feature1">Advanced Analytics</span>
             </div>
             <div class="feature-pill">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
                 </svg>
-                Fast Execution
+                <span data-i18n="feature2">Fast Execution</span>
             </div>
             <div class="feature-pill">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
                 </svg>
-                Bank-Grade Security
+                <span data-i18n="feature3">Bank-Grade Security</span>
             </div>
         </div>
 
         <div class="social-section">
-            <p class="social-text">Follow us for updates</p>
+            <p class="social-text" data-i18n="socialText">Follow us for updates</p>
             <div class="social-links">
                 <a href="https://x.com/FXEthosTrader" target="_blank" aria-label="Twitter" class="social-link">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                     </svg>
                 </a>
-                <a href="#" aria-label="LinkedIn" class="social-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                </a>
-                <a href="#" aria-label="Instagram" class="social-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-                    </svg>
-                </a>
             </div>
         </div>
     </main>
 
-    <!-- Floating Trading Card -->
-    <div class="floating-card">
-        <div class="trading-card">
+    <!-- Floating Trading Cards -->
+    <div class="floating-cards">
+        <div class="trading-card" data-pair="EURUSD">
             <div class="trading-card-header">
                 <span class="pair">EUR/USD</span>
-                <span class="change positive">+0.42%</span>
+                <span class="change positive" id="changeEURUSD">+0.00%</span>
             </div>
             <div class="trading-card-chart">
-                <svg viewBox="0 0 200 80" class="chart-line">
-                    <path d="M0,60 Q30,55 50,40 T100,35 T150,25 T200,20" fill="none" stroke="url(#chartGradient)" stroke-width="2"/>
+                <svg viewBox="0 0 200 50" class="chart-line">
+                    <path d="M0,40 Q30,35 50,25 T100,20 T150,15 T200,10" fill="none" stroke="url(#chartGradient1)" stroke-width="2"/>
                     <defs>
-                        <linearGradient id="chartGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <linearGradient id="chartGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
                             <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.5" />
                             <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
                         </linearGradient>
@@ -617,18 +681,146 @@
                 </svg>
             </div>
             <div class="trading-card-price">
-                <span class="price" id="livePrice">1.0847</span>
-                <span class="time">Live</span>
+                <span class="price" id="priceEURUSD">1.0890</span>
+                <span class="time-badge"><span class="live-dot"></span>Live</span>
+            </div>
+        </div>
+        <div class="trading-card" data-pair="GBPUSD">
+            <div class="trading-card-header">
+                <span class="pair">GBP/USD</span>
+                <span class="change positive" id="changeGBPUSD">+0.00%</span>
+            </div>
+            <div class="trading-card-chart">
+                <svg viewBox="0 0 200 50" class="chart-line">
+                    <path d="M0,30 Q40,35 70,20 T130,25 T170,15 T200,18" fill="none" stroke="url(#chartGradient2)" stroke-width="2"/>
+                    <defs>
+                        <linearGradient id="chartGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.5" />
+                            <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="trading-card-price">
+                <span class="price" id="priceGBPUSD">1.2650</span>
+                <span class="time-badge"><span class="live-dot"></span>Live</span>
+            </div>
+        </div>
+        <div class="trading-card" data-pair="USDJPY">
+            <div class="trading-card-header">
+                <span class="pair">USD/JPY</span>
+                <span class="change positive" id="changeUSDJPY">+0.00%</span>
+            </div>
+            <div class="trading-card-chart">
+                <svg viewBox="0 0 200 50" class="chart-line">
+                    <path d="M0,35 Q50,30 80,40 T140,20 T180,25 T200,15" fill="none" stroke="url(#chartGradient3)" stroke-width="2"/>
+                    <defs>
+                        <linearGradient id="chartGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.5" />
+                            <stop offset="100%" style="stop-color:#10b981;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="trading-card-price">
+                <span class="price" id="priceUSDJPY">149.50</span>
+                <span class="time-badge"><span class="live-dot"></span>Live</span>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 FXEthos. All rights reserved.</p>
+        <p data-i18n="footer">&copy; 2025 FXEthos. All rights reserved.</p>
     </footer>
 
     <script>
+        // Translations
+        const translations = {
+            en: {
+                login: 'Login',
+                title1: 'Something',
+                title2: 'Amazing',
+                title3: 'is Coming',
+                tagline: "We're building the next generation of trading tools. Professional-grade analytics, lightning-fast execution, and AI-powered insights.",
+                launchDate: 'Launching soon',
+                notifyText: 'Be the first to know when we launch',
+                emailPlaceholder: 'Enter your email',
+                notifyBtn: 'Notify Me',
+                successMsg: "Thanks! We'll notify you when we launch.",
+                privacyNote: 'We respect your privacy. No spam, ever.',
+                feature1: 'Advanced Analytics',
+                feature2: 'Fast Execution',
+                feature3: 'Bank-Grade Security',
+                socialText: 'Follow us for updates',
+                footer: '© 2025 FXEthos. All rights reserved.',
+                sending: 'Sending...',
+                error: 'Oops! Something went wrong. Please try again.'
+            },
+            nl: {
+                login: 'Inloggen',
+                title1: 'Iets',
+                title2: 'Geweldigs',
+                title3: 'Komt Eraan',
+                tagline: 'We bouwen aan de volgende generatie trading tools. Professionele analyses, razendsnelle uitvoering en AI-gestuurde inzichten.',
+                launchDate: 'Binnenkort beschikbaar',
+                notifyText: 'Wees de eerste die het weet wanneer we lanceren',
+                emailPlaceholder: 'Vul je e-mail in',
+                notifyBtn: 'Houd me op de hoogte',
+                successMsg: 'Bedankt! We laten je weten wanneer we live gaan.',
+                privacyNote: 'We respecteren je privacy. Geen spam, ooit.',
+                feature1: 'Geavanceerde Analyses',
+                feature2: 'Snelle Uitvoering',
+                feature3: 'Bank-Level Beveiliging',
+                socialText: 'Volg ons voor updates',
+                footer: '© 2025 FXEthos. Alle rechten voorbehouden.',
+                sending: 'Verzenden...',
+                error: 'Oeps! Er ging iets mis. Probeer het opnieuw.'
+            }
+        };
+
+        let currentLang = localStorage.getItem('fxethos-lang') || 'en';
+
+        // Apply translations
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('fxethos-lang', lang);
+
+            // Update text content
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Update placeholders
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+        }
+
+        // Language switcher event listeners
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.dataset.lang);
+            });
+        });
+
+        // Initialize language on page load
+        setLanguage(currentLang);
+
         // Form submission with Formspree
         document.getElementById('notifyForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -636,10 +828,11 @@
             const form = this;
             const email = form.querySelector('.email-input').value;
             const submitBtn = form.querySelector('.btn-primary');
-            const originalBtnText = submitBtn.innerHTML;
+            const btnTextSpan = submitBtn.querySelector('[data-i18n]');
+            const originalText = btnTextSpan.textContent;
 
             // Show loading state
-            submitBtn.innerHTML = 'Sending...';
+            btnTextSpan.textContent = translations[currentLang].sending;
             submitBtn.disabled = true;
 
             try {
@@ -661,28 +854,81 @@
                         document.getElementById('successMessage').classList.remove('show');
                     }, 5000);
                 } else {
-                    alert('Oops! Something went wrong. Please try again.');
+                    alert(translations[currentLang].error);
                 }
             } catch (error) {
-                alert('Oops! Something went wrong. Please try again.');
+                alert(translations[currentLang].error);
             }
 
             // Reset button
-            submitBtn.innerHTML = originalBtnText;
+            btnTextSpan.textContent = originalText;
             submitBtn.disabled = false;
         });
 
-        // Simulated live price
-        const priceElement = document.getElementById('livePrice');
-        let basePrice = 1.0847;
+        // Live forex prices from API
+        const pairs = {
+            EURUSD: { price: 1.0890, open: null, decimals: 4 },
+            GBPUSD: { price: 1.2650, open: null, decimals: 4 },
+            USDJPY: { price: 149.50, open: null, decimals: 2 }
+        };
 
-        setInterval(() => {
-            const change = (Math.random() - 0.5) * 0.0010;
-            basePrice += change;
-            if (priceElement) {
-                priceElement.textContent = basePrice.toFixed(4);
+        async function fetchForexPrices() {
+            try {
+                // Fetch EUR and GBP rates
+                const [eurResponse, gbpResponse] = await Promise.all([
+                    fetch('https://open.er-api.com/v6/latest/EUR'),
+                    fetch('https://open.er-api.com/v6/latest/GBP')
+                ]);
+                const eurData = await eurResponse.json();
+                const gbpData = await gbpResponse.json();
+
+                if (eurData.rates) {
+                    pairs.EURUSD.price = eurData.rates.USD;
+                    pairs.USDJPY.price = eurData.rates.JPY / eurData.rates.USD; // USD/JPY
+                    if (pairs.EURUSD.open === null) pairs.EURUSD.open = pairs.EURUSD.price;
+                    if (pairs.USDJPY.open === null) pairs.USDJPY.open = pairs.USDJPY.price;
+                }
+                if (gbpData.rates) {
+                    pairs.GBPUSD.price = gbpData.rates.USD;
+                    if (pairs.GBPUSD.open === null) pairs.GBPUSD.open = pairs.GBPUSD.price;
+                }
+                updateAllPrices();
+            } catch (error) {
+                console.log('Using simulated prices');
             }
-        }, 3000);
+        }
+
+        function updateAllPrices() {
+            Object.keys(pairs).forEach(pair => {
+                const priceEl = document.getElementById(`price${pair}`);
+                const changeEl = document.getElementById(`change${pair}`);
+                const data = pairs[pair];
+
+                if (priceEl) {
+                    // Add micro-fluctuation
+                    const fluctuation = pair === 'USDJPY'
+                        ? (Math.random() - 0.5) * 0.05
+                        : (Math.random() - 0.5) * 0.0003;
+                    const displayPrice = data.price + fluctuation;
+                    priceEl.textContent = displayPrice.toFixed(data.decimals);
+
+                    // Update percentage change
+                    if (changeEl && data.open) {
+                        const percentChange = ((displayPrice - data.open) / data.open) * 100;
+                        const sign = percentChange >= 0 ? '+' : '';
+                        changeEl.textContent = `${sign}${percentChange.toFixed(2)}%`;
+                        changeEl.className = `change ${percentChange >= 0 ? 'positive' : 'negative'}`;
+                    }
+                }
+            });
+        }
+
+        // Fetch real prices on load and every 60 seconds
+        fetchForexPrices();
+        setInterval(fetchForexPrices, 60000);
+
+        // Update display every 3 seconds with micro-fluctuations
+        setInterval(updateAllPrices, 3000);
     </script>
 </body>
 </html>
