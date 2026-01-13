@@ -606,16 +606,19 @@
 
         <div class="notify-section">
             <p class="notify-text" data-i18n="notifyText">Be the first to know when we launch</p>
-            <form class="notify-form" id="notifyForm" action="https://formspree.io/f/xjggbkoe" method="POST">
+            <form class="notify-form" id="notifyForm">
                 <input
                     type="email"
-                    name="email"
+                    name="EMAIL"
                     data-i18n-placeholder="emailPlaceholder"
                     placeholder="Enter your email"
                     class="email-input"
                     required
                 >
-                <input type="hidden" name="_subject" value="New FXEthos Signup!">
+                <!-- Mailchimp honeypot - do not remove -->
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_7a936477bb83a80f8a676ac1f_cf27a32e25" tabindex="-1" value="">
+                </div>
                 <button type="submit" class="btn-primary">
                     <span data-i18n="notifyBtn">Notify Me</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -821,8 +824,8 @@
         // Initialize language on page load
         setLanguage(currentLang);
 
-        // Form submission with Formspree
-        document.getElementById('notifyForm').addEventListener('submit', async function(e) {
+        // Form submission with Mailchimp
+        document.getElementById('notifyForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
             const form = this;
@@ -835,16 +838,15 @@
             btnTextSpan.textContent = translations[currentLang].sending;
             submitBtn.disabled = true;
 
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
+            // Mailchimp JSONP URL
+            const mailchimpUrl = 'https://fxethos.us7.list-manage.com/subscribe/post-json?u=7a936477bb83a80f8a676ac1f&id=cf27a32e25&f_id=005343e4f0';
 
-                if (response.ok) {
+            // Build URL with email parameter
+            const url = mailchimpUrl + '&EMAIL=' + encodeURIComponent(email) + '&c=handleMailchimpResponse';
+
+            // Create callback function
+            window.handleMailchimpResponse = function(response) {
+                if (response.result === 'success') {
                     // Show success message
                     document.getElementById('successMessage').classList.add('show');
                     form.querySelector('.email-input').value = '';
@@ -854,15 +856,37 @@
                         document.getElementById('successMessage').classList.remove('show');
                     }, 5000);
                 } else {
-                    alert(translations[currentLang].error);
+                    // Check if already subscribed (not really an error)
+                    if (response.msg && response.msg.includes('already subscribed')) {
+                        document.getElementById('successMessage').classList.add('show');
+                        form.querySelector('.email-input').value = '';
+                        setTimeout(() => {
+                            document.getElementById('successMessage').classList.remove('show');
+                        }, 5000);
+                    } else {
+                        alert(translations[currentLang].error);
+                    }
                 }
-            } catch (error) {
-                alert(translations[currentLang].error);
-            }
 
-            // Reset button
-            btnTextSpan.textContent = originalText;
-            submitBtn.disabled = false;
+                // Reset button
+                btnTextSpan.textContent = originalText;
+                submitBtn.disabled = false;
+
+                // Clean up script tag
+                const script = document.getElementById('mailchimp-script');
+                if (script) script.remove();
+            };
+
+            // Create and append JSONP script
+            const script = document.createElement('script');
+            script.id = 'mailchimp-script';
+            script.src = url;
+            script.onerror = function() {
+                alert(translations[currentLang].error);
+                btnTextSpan.textContent = originalText;
+                submitBtn.disabled = false;
+            };
+            document.body.appendChild(script);
         });
 
         // Live forex prices from API
