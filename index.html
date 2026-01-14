@@ -534,6 +534,65 @@
             }
         }
 
+        /* Cursor Spotlight */
+        .cursor-spotlight {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(16, 185, 129, 0.05) 40%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .cursor-spotlight.active {
+            opacity: 1;
+        }
+
+        /* X Follow Card */
+        .x-follow-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 28px;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--color-text);
+            transition: all 0.3s ease;
+        }
+
+        .x-follow-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .x-follow-card svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .x-follow-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .x-handle {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .x-cta {
+            font-size: 13px;
+            color: var(--color-text-muted);
+        }
+
         /* Success message */
         .success-message {
             display: none;
@@ -558,6 +617,9 @@
     </style>
 </head>
 <body>
+    <!-- Cursor Spotlight -->
+    <div class="cursor-spotlight"></div>
+
     <!-- Background Effects -->
     <div class="bg-effects">
         <div class="gradient-orb orb-1"></div>
@@ -656,13 +718,15 @@
 
         <div class="social-section">
             <p class="social-text" data-i18n="socialText">Follow us for updates</p>
-            <div class="social-links">
-                <a href="https://x.com/FXEthosTrader" target="_blank" aria-label="Twitter" class="social-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                </a>
-            </div>
+            <a href="https://x.com/FXEthosTrader" target="_blank" class="x-follow-card">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+                <div class="x-follow-info">
+                    <span class="x-handle">@FXEthosTrader</span>
+                    <span class="x-cta" data-i18n="xCta">Follow for trading updates</span>
+                </div>
+            </a>
         </div>
     </main>
 
@@ -757,6 +821,7 @@
                 feature2: 'Fast Execution',
                 feature3: 'Bank-Grade Security',
                 socialText: 'Follow us for updates',
+                xCta: 'Follow for trading updates',
                 footer: '© 2025 FXEthos. All rights reserved.',
                 sending: 'Sending...',
                 error: 'Oops! Something went wrong. Please try again.'
@@ -777,6 +842,7 @@
                 feature2: 'Snelle Uitvoering',
                 feature3: 'Bank-Level Beveiliging',
                 socialText: 'Volg ons voor updates',
+                xCta: 'Volg voor trading updates',
                 footer: '© 2025 FXEthos. Alle rechten voorbehouden.',
                 sending: 'Verzenden...',
                 error: 'Oeps! Er ging iets mis. Probeer het opnieuw.'
@@ -970,6 +1036,18 @@
 
         // Update display every 3 seconds with micro-fluctuations
         setInterval(updateAllPrices, 3000);
+
+        // Cursor spotlight effect
+        const spotlight = document.querySelector('.cursor-spotlight');
+        document.addEventListener('mousemove', (e) => {
+            spotlight.style.left = e.clientX + 'px';
+            spotlight.style.top = e.clientY + 'px';
+            spotlight.classList.add('active');
+        });
+        document.addEventListener('mouseleave', () => {
+            spotlight.classList.remove('active');
+        });
+
     </script>
 </body>
 </html>
